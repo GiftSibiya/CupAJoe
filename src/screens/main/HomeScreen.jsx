@@ -8,18 +8,29 @@ import {
   SafeAreaView,
   TextInput,
   TouchableOpacity,
+  FlatList,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
+import Carousel from "react-native-snap-carousel";
 
 ///--///
 
 /// FILE IMPORTS ///
 import beansBg from "../../../assets/images/beansBG.png";
+import { categories, coffeeItems } from "../../../assets/data/appData";
+import CoffeCard from "../../components/CoffeCard";
 ///--///
 
 const HomeScreen = () => {
+  /// HOOKS ///
+
+  const [activeCategory, setActiveCategory] = useState(1);
+
+  /// -- ///
+
+  /// RETURN ///
   return (
     <View style={styles.container}>
       <StatusBar />
@@ -68,6 +79,39 @@ const HomeScreen = () => {
               color="brown"
             />
           </TextInput>
+        </View>
+
+        {/* HOWIZONTAL SCROLL  */}
+        <View style={styles.categoryScroll}>
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            data={categories}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => {
+              return (
+                <TouchableOpacity onPress={setActiveCategory(item.id)}>
+                  <Text style={styles.categoryText}>{item.title}</Text>
+                </TouchableOpacity>
+              );
+            }}
+          />
+        </View>
+
+        {/* -- */}
+
+        <View style={styles.carousel}>
+          <Carousel
+            containerCustomStyle={{ overflow: "visible" }}
+            data={coffeeItems}
+            renderItem={({ item }) => <CoffeCard item={item} />}
+            firstItem={1}
+            inactiveSlideOpacity={0.75}
+            inactiveSlideScale={0.77}
+            sliderWidth={260}
+            itemWidth={260}
+            slideStyle={{ display: "flex", alignItems: "center" }}
+          />
         </View>
       </SafeAreaView>
     </View>
@@ -122,5 +166,26 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: "90%",
     backgroundColor: "silver",
+  },
+  categoryScroll: {
+    padding: 5,
+    overflow: "visible",
+    marginTop: 10,
+    height: 70,
+  },
+  categoryText: {
+    backgroundColor: "silver",
+    padding: 15,
+    borderRadius: 20,
+    margin: 5,
+    fontSize: 14,
+  },
+  carousel: {
+    display: "flex",
+    alignItems: "center",
+    marginTop: "10",
+    paddingVertical: 2,
+    borderWidth: 2,
+    height: 200,
   },
 });
