@@ -1,5 +1,10 @@
+/// DEPENDENCY IMPORTS ///
+
 import { View, Text, Image, StyleSheet } from "react-native";
 import React from "react";
+import { MaterialCommunityIcons } from "react-native-vector-icons";
+
+///---///
 
 const CoffeCard = ({ item }) => {
   return (
@@ -9,6 +14,28 @@ const CoffeCard = ({ item }) => {
       </View>
       <View>
         <Text style={styles.coffeName}>{item.name}</Text>
+        <View style={styles.starCon}>
+          <MaterialCommunityIcons
+            style={styles.icons}
+            name="star"
+            size={25}
+            color="white"
+          />
+          <Text style={styles.starText}>{item.stars}</Text>
+        </View>
+        <View style={styles.volumeCon}>
+          <Text style={styles.volumeText}>Volume:</Text>
+          <Text style={styles.volumeVar}>{item.volume}</Text>
+        </View>
+        <View style={styles.priceCon}>
+          <Text style={styles.priceText}>R{item.price}</Text>
+          <MaterialCommunityIcons
+            style={styles.addIcons}
+            name="plus"
+            size={25}
+            color="white"
+          />
+        </View>
       </View>
     </View>
   );
@@ -43,5 +70,48 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginVertical: 10,
     fontSize: 25,
+  },
+  starCon: {
+    display: "flex",
+    flexDirection: "row",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    alignItems: "center",
+    width: 80,
+    paddingHorizontal: 10,
+    marginHorizontal: 10,
+    borderRadius: 20,
+  },
+  starText: {
+    color: "white",
+    fontSize: 18,
+  },
+  volumeCon: {
+    display: "flex",
+    flexDirection: "row",
+    margin: 10,
+  },
+  volumeText: {
+    color: "rgba(255, 255, 255, 0.5)",
+    marginHorizontal: 10,
+  },
+  volumeVar: {
+    color: "white",
+  },
+  priceCon: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginHorizontal: 20,
+  },
+  priceText: {
+    color: "white",
+    fontSize: 20,
+  },
+  addIcons: {
+    backgroundColor: "white",
+    padding: 10,
+    color: "brown",
+    borderRadius: 50,
   },
 });
