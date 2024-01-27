@@ -108,8 +108,8 @@ const HomeScreen = () => {
             firstItem={1}
             inactiveSlideOpacity={0.75}
             inactiveSlideScale={0.77}
-            sliderWidth={260}
-            itemWidth={260}
+            sliderWidth={400}
+            itemWidth={220}
             slideStyle={{ display: "flex", alignItems: "center" }}
           />
         </View>
@@ -185,7 +185,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: "10",
     paddingVertical: 2,
-    borderWidth: 2,
-    height: 200,
+    height: 400,
   },
 });
