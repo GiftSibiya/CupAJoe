@@ -46,7 +46,7 @@ export default CoffeCard;
 const styles = StyleSheet.create({
   cardContainer: {
     marginTop: 20,
-    backgroundColor: "brown",
+    backgroundColor: "#994D1C",
     borderRadius: 30,
     height: 300,
     width: 200,

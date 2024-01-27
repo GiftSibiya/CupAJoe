@@ -1,11 +1,15 @@
 /// DEPENDENCY IMPORTS ///
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { MaterialCommunityIcons } from "react-native-vector-icons";
+
 ///--///
 
 /// VARIABLES ///
 const Stack = createNativeStackNavigator();
+const BottomTab = createBottomTabNavigator();
 ///--///
 
 /// FILES IMPORT ///
@@ -16,6 +20,8 @@ import LoginScreen from "./src/screens/auth/LoginScreen";
 
 // MAIN SCREENS
 import SignUpScreen from "./src/screens/auth/SignUpScreen";
+import Cart from "./src/screens/main/Cart";
+import Account from "./src/screens/main/Account";
 
 ///--///
 
@@ -34,13 +40,68 @@ const AuthStack = () => {
 // MAIN STACK //
 const MainStack = () => {
   return (
-    <Stack.Navigator>
-      <Stack.Screen
+    <BottomTab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          marginHorizontal: 10,
+          marginBottom: 10,
+          borderRadius: 20,
+          height: 60,
+          backgroundColor: "#994D1C",
+        },
+      })}
+    >
+      <BottomTab.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerShown: false }}
+        options={{
+          tabBarIcon: () => {
+            return (
+              <MaterialCommunityIcons
+                style={styles.icons}
+                name="home"
+                size={40}
+                color="white"
+              />
+            );
+          },
+        }}
       />
-    </Stack.Navigator>
+      <BottomTab.Screen
+        name="Cart"
+        component={Cart}
+        options={{
+          tabBarIcon: () => {
+            return (
+              <MaterialCommunityIcons
+                style={styles.icons}
+                name="cart"
+                size={40}
+                color="white"
+              />
+            );
+          },
+        }}
+      />
+      <BottomTab.Screen
+        name="Profile"
+        component={Account}
+        options={{
+          tabBarIcon: () => {
+            return (
+              <MaterialCommunityIcons
+                style={styles.icons}
+                name="account"
+                size={40}
+                color="white"
+              />
+            );
+          },
+        }}
+      />
+    </BottomTab.Navigator>
   );
 };
 //--//
