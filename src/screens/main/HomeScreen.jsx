@@ -1,6 +1,14 @@
 /// DEPENDENCY IMPORTS ///
 
-import { View, Text, StyleSheet, Image, SafeAreaView } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
@@ -18,35 +26,48 @@ const HomeScreen = () => {
       <Image source={beansBg} style={styles.bgBeans} />
 
       {/* HEADER ICONS  */}
-      <SafeAreaView style={styles.headerIcons}>
-        {/* ACCOUNT ICON */}
+      <SafeAreaView>
+        <View style={styles.headerIcons}>
+          {/* ACCOUNT ICON */}
 
-        <MaterialCommunityIcons
-          style={styles.icons}
-          name="account"
-          size={40}
-          color="brown"
-        />
-
-        {/* LOCATON ICONS */}
-        <View style={styles.location}>
           <MaterialCommunityIcons
             style={styles.icons}
-            name="map-marker"
+            name="account"
             size={40}
             color="brown"
           />
-          <Text style={styles.locationText}> Pretoria, CBD</Text>
 
-          {/* NOTIFICATION ICON */}
+          {/* LOCATON ICONS */}
+          <View style={styles.location}>
+            <MaterialCommunityIcons
+              style={styles.icons}
+              name="map-marker"
+              size={40}
+              color="brown"
+            />
+            <Text style={styles.locationText}> Pretoria, CBD</Text>
+
+            {/* NOTIFICATION ICON */}
+          </View>
+          <View style={styles.notifi}>
+            <MaterialCommunityIcons
+              style={styles.icons}
+              name="bell-outline"
+              size={40}
+              color="brown"
+            />
+          </View>
         </View>
-        <View style={styles.notifi}>
-          <MaterialCommunityIcons
-            style={styles.icons}
-            name="bell-outline"
-            size={40}
-            color="brown"
-          />
+        {/* SEARCH BAR */}
+        <View style={styles.searchStuff}>
+          <TextInput style={styles.searchBar} placeholder="Search">
+            <MaterialCommunityIcons
+              style={styles.icons}
+              name="magnify"
+              size={30}
+              color="brown"
+            />
+          </TextInput>
         </View>
       </SafeAreaView>
     </View>
@@ -68,12 +89,16 @@ const styles = StyleSheet.create({
     height: "20%",
   },
   headerIcons: {
+    height: "20%",
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     marginTop: 25,
     marginHorizontal: 10,
-    flex: 1,
+  },
+  icons: {
+    height: 50,
   },
   location: {
     display: "flex",
@@ -83,5 +108,19 @@ const styles = StyleSheet.create({
   },
   locationText: {
     fontSize: 16,
+  },
+  searchStuff: {
+    marginTop: 10,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+  },
+  searchBar: {
+    padding: 10,
+    height: 50,
+    borderRadius: 20,
+    width: "90%",
+    backgroundColor: "silver",
   },
 });
