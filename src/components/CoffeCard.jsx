@@ -1,6 +1,6 @@
 /// DEPENDENCY IMPORTS ///
 
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
 
@@ -29,12 +29,14 @@ const CoffeCard = ({ item }) => {
         </View>
         <View style={styles.priceCon}>
           <Text style={styles.priceText}>R{item.price}</Text>
-          <MaterialCommunityIcons
-            style={styles.addIcons}
-            name="plus"
-            size={25}
-            color="white"
-          />
+          <TouchableOpacity>
+            <MaterialCommunityIcons
+              style={styles.addIcons}
+              name="plus"
+              size={25}
+              color="white"
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
