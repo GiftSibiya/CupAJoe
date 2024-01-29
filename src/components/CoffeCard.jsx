@@ -3,43 +3,47 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 ///---///
 
 const CoffeCard = ({ item }) => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.cardContainer}>
-      <View style={styles.imageContainer}>
-        <Image style={styles.cardImage} source={item.image}></Image>
-      </View>
-      <View>
-        <Text style={styles.coffeName}>{item.name}</Text>
-        <View style={styles.starCon}>
-          <MaterialCommunityIcons
-            style={styles.icons}
-            name="star"
-            size={25}
-            color="white"
-          />
-          <Text style={styles.starText}>{item.stars}</Text>
+    <TouchableOpacity onPress={() => navigation.navigate("ProductScreen")}>
+      <View style={styles.cardContainer}>
+        <View style={styles.imageContainer}>
+          <Image style={styles.cardImage} source={item.image}></Image>
         </View>
-        <View style={styles.volumeCon}>
-          <Text style={styles.volumeText}>Volume:</Text>
-          <Text style={styles.volumeVar}>{item.volume}</Text>
-        </View>
-        <View style={styles.priceCon}>
-          <Text style={styles.priceText}>R{item.price}</Text>
-          <TouchableOpacity>
+        <View>
+          <Text style={styles.coffeName}>{item.name}</Text>
+          <View style={styles.starCon}>
             <MaterialCommunityIcons
-              style={styles.addIcons}
-              name="plus"
+              style={styles.icons}
+              name="star"
               size={25}
               color="white"
             />
-          </TouchableOpacity>
+            <Text style={styles.starText}>{item.stars}</Text>
+          </View>
+          <View style={styles.volumeCon}>
+            <Text style={styles.volumeText}>Volume:</Text>
+            <Text style={styles.volumeVar}>{item.volume}</Text>
+          </View>
+          <View style={styles.priceCon}>
+            <Text style={styles.priceText}>R{item.price}</Text>
+            <TouchableOpacity>
+              <MaterialCommunityIcons
+                style={styles.addIcons}
+                name="plus"
+                size={25}
+                color="white"
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
