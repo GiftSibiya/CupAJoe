@@ -16,11 +16,14 @@ import { MaterialCommunityIcons } from "react-native-vector-icons";
 /// FILE IMPORTS ///
 
 import coffeeTable from "../../../assets/images/ProductPage/coffeTable.png";
+import { useNavigation } from "@react-navigation/native";
 
 /// -- ///
 
 const ProductScreen = ({ route }) => {
   const { item } = route.params;
+
+  const navigation = useNavigation();
 
   return (
     <SafeAreaView style={styles.productContainer}>
@@ -32,7 +35,7 @@ const ProductScreen = ({ route }) => {
           {/* HEADER ICONS */}
 
           <View style={styles.productHeader__Icons}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
               <MaterialCommunityIcons
                 style={styles.addIcons}
                 name="arrow-left"
@@ -95,11 +98,41 @@ const ProductScreen = ({ route }) => {
         </View>
         {/* -- */}
 
-        {/* COFFEE NAME AND PRICE */}
-        <View style={styles.namePrice}>
-          <Text style={styles.itemName}>{item.name}</Text>
-          <Text style={styles.itemPrice}>R{item.price} </Text>
+        {/* ABOUT SECTION */}
+        <View style={styles.itemAbout}>
+          <Text style={styles.itemAbout__heading}>About</Text>
+          <Text style={styles.itemAbout__desc}>{item.desc} </Text>
         </View>
+        {/* -- */}
+
+        {/* QUANTITY AND BUY BUTTON */}
+        <View style={styles.itemBuy}>
+          <View style={styles.itemBuy__vol}>
+            <View style={styles.itemVolInfo}>
+              <Text style={styles.itemVolInfo__Text}>Volume: </Text>
+              <Text style={styles.itemVolInfo__Vol}>{item.volume}</Text>
+            </View>
+            <View style={styles.itemBuy__QTY}>
+              <MaterialCommunityIcons
+                style={styles.addIcons}
+                name="plus"
+                size={30}
+                color="white"
+              />
+              <Text> 0 </Text>
+              <MaterialCommunityIcons
+                style={styles.addIcons}
+                name="minus"
+                size={30}
+                color="white"
+              />
+            </View>
+          </View>
+          <TouchableOpacity style={styles.BuyBtn}>
+            <Text style={styles.BuyBtn__Text}> Buy Now</Text>
+          </TouchableOpacity>
+        </View>
+
         {/* -- */}
       </View>
 
@@ -116,6 +149,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
   },
+
+  /// HEADER ///
+
   headerThings: {
     display: "flex",
     width: "100%",
@@ -150,8 +186,11 @@ const styles = StyleSheet.create({
     height: 200,
     width: 200,
   },
+
+  ///--///
+
   bottomCon: {
-    marginTop: 100,
+    marginTop: 80,
     display: "flex",
     flexDirecton: "column",
     width: "100%",
@@ -176,7 +215,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    margin: 20,
+    marginVertical: 10,
+    marginHorizontal: 20,
     height: 40,
   },
   itemName: {
@@ -213,6 +253,73 @@ const styles = StyleSheet.create({
   },
 
   ///--///
+
+  /// ABOUT SECTION ///
+
+  itemAbout: {},
+  itemAbout__heading: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  itemAbout__desc: {},
+
+  ///--///
+
+  /// QUANTITY AND BUY BUTTON   ///
+
+  itemBuy: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 20,
+    marginTop: 20,
+    backgroundColor: "#A94438",
+  },
+  itemVolInfo: {
+    display: "flex",
+    flexDirection: "row",
+    marginBottom: 5,
+  },
+  itemVolInfo__Text: {
+    color: "rgba(255, 255, 255, 0.5)",
+  },
+
+  itemBuy__QTY: {
+    display: "felx",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderWidth: 2,
+    borderColor: "white",
+    borderRadius: 30,
+    paddingHorizontal: 5,
+  },
+  itemBuy__vol: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  itemVolInfo__Vol: {
+    color: "white",
+    fontWeight: "bold",
+  },
+
+  BuyBtn: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#C38154",
+    width: 150,
+    height: 50,
+    borderRadius: 100,
+  },
+  BuyBtn__Text: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+
+  ///==///
 });
 
 /// -- ///
