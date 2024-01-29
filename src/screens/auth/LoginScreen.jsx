@@ -1,5 +1,9 @@
+/// IMPORT DEPENDENCIES ///
+
 import { View, Text, Button } from "react-native";
 import React from "react";
+
+///--///
 
 const LoginScreen = ({ navigation }) => {
   /// FUNCTION ///
