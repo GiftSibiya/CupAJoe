@@ -15,12 +15,19 @@ const BottomTab = createBottomTabNavigator();
 /// FILES IMPORT ///
 
 //AUTH SCREENS
-import HomeScreen from "./src/screens/main/HomeScreen";
 import LoginScreen from "./src/screens/auth/LoginScreen";
-
-// MAIN SCREENS
 import SignUpScreen from "./src/screens/auth/SignUpScreen";
+
+/// MAIN SCREENS ///
+
+//MAIN SCREENS
+import HomeScreen from "./src/screens/main/HomeScreen";
+import ProductScreen from "./src/screens/main/ProductScreen";
+
+//CART SCREEN
 import Cart from "./src/screens/main/Cart";
+
+//ACCOUNT SCREEN
 import Account from "./src/screens/main/Account";
 
 ///--///
@@ -36,6 +43,25 @@ const AuthStack = () => {
 };
 
 //--//
+
+/// MAIN STACK ///
+const HomeStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ProductScreen"
+        component={ProductScreen}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+};
+/// -- ///
 
 // MAIN STACK //
 const MainStack = () => {
@@ -55,7 +81,7 @@ const MainStack = () => {
     >
       <BottomTab.Screen
         name="HomeScreen"
-        component={HomeScreen}
+        component={HomeStack}
         options={{
           tabBarIcon: () => {
             return (
