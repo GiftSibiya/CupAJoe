@@ -10,7 +10,9 @@ import { useNavigation } from "@react-navigation/native";
 const CoffeCard = ({ item }) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("ProductScreen")}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("ProductScreen", { item: item })}
+    >
       <View style={styles.cardContainer}>
         <View style={styles.imageContainer}>
           <Image style={styles.cardImage} source={item.image}></Image>
