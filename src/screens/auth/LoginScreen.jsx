@@ -8,6 +8,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   TextInput,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
 
@@ -36,15 +37,21 @@ const LoginScreen = ({ navigation }) => {
     <View>
       <Image style={styles.bgImg} source={coffeBro} />
       <KeyboardAvoidingView style={styles.loginUi}>
-        <Text>LoginScreen is here</Text>
-
         {/* MAIN LOGIN CONTAINER */}
         <View style={styles.inputContainer}>
-          <TextInput style={styles.input__box} />
-          <TextInput style={styles.input__box} />
+          <Text style={styles.heading}>Welcome Back, Login Here</Text>
+          <TextInput style={styles.input__box} placeholder="Email" />
+          <TextInput style={styles.input__box} placeholder="Password" />
           <TextInput />
-          <Button onPress={HandleLogIn} title="Login"></Button>
-          <Button onPress={HandleSignUp} title="SignUp"></Button>
+          <TouchableOpacity style={styles.loginBtn} onPress={HandleLogIn}>
+            <Text style={styles.loginBtn__Text}>Login</Text>
+          </TouchableOpacity>
+          <Text style={styles.signUp}>
+            Don't have an account?{" "}
+            <TouchableOpacity onPress={HandleSignUp}>
+              <Text style={styles.signUpText}> Sign Up</Text>
+            </TouchableOpacity>
+          </Text>
         </View>
 
         {/* -- */}
@@ -77,13 +84,55 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: "60%",
     width: "80%",
-    backgroundColor: "rgba(255,255,255,0.5)",
+    borderRadius: 20,
+    backgroundColor: "rgba(255,255,255,0.4)",
+  },
+
+  heading: {
+    fontSize: 20,
+    marginBottom: 10,
+    fontWeight: "bold",
   },
 
   input__box: {
-    borderWidth: 1,
     width: "80%",
-    marginVertical: 20,
+    height: 50,
+    marginBottom: 20,
+    borderRadius: 20,
+    backgroundColor: "silver",
+    borderWidth: 1,
+    padding: 10,
+  },
+
+  ///--///
+
+  /// BUTTON ///
+
+  loginBtn: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: 40,
+    width: "80%",
+    borderRadius: 10,
+    backgroundColor: "#994D1C",
+  },
+
+  loginBtn__Text: {
+    color: "white",
+  },
+
+  signUp: {
+    marginTop: 20,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 2,
+  },
+
+  signUpText: {
+    color: "brown",
+    marginTop: 10,
   },
 
   ///--///
