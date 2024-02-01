@@ -43,7 +43,6 @@ const SignUpScreen = () => {
             </TouchableOpacity>
           </Text>
         </View>
-        <View style={styles.socialLogin}></View>
 
         {/* -- */}
       </KeyboardAvoidingView>

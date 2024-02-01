@@ -17,6 +17,8 @@ import React from "react";
 /// FILES IMPORT ///
 
 import coffeBro from "../../../assets/images/auth/coffeeBro.png";
+import googleIcon from "../../../assets/images/auth/google.png";
+import facebookIcon from "../../../assets/images/auth/facebook.png";
 
 ///--///
 
@@ -46,6 +48,19 @@ const LoginScreen = ({ navigation }) => {
           <TouchableOpacity style={styles.loginBtn} onPress={HandleLogIn}>
             <Text style={styles.loginBtn__Text}>Login</Text>
           </TouchableOpacity>
+
+          {/* ICONS GROUP */}
+
+          <View style={styles.socialLogin}>
+            <Text> Or Continue With... </Text>
+            <View style={styles.icons}>
+              <Image source={googleIcon} />
+              <Image source={facebookIcon} />
+            </View>
+          </View>
+
+          {/* -- */}
+
           <Text style={styles.signUp}>
             Don't have an account?{" "}
             <TouchableOpacity onPress={HandleSignUp}>
@@ -123,16 +138,27 @@ const styles = StyleSheet.create({
   },
 
   signUp: {
-    marginTop: 20,
+    marginTop: 2,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderWidth: 2,
   },
 
   signUpText: {
     color: "brown",
     marginTop: 10,
+  },
+
+  socialLogin: {
+    display: "flex",
+    flexDirection: "column",
+  },
+
+  icons: {
+    marginTop: 15,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 
   ///--///
